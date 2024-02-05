@@ -14,4 +14,4 @@ message_templates = [
 day = input("Day > ")
 print()
 print("Copy and post at twitter 👇\n")
-print(choice(message_templates).replace('#',day) + "https://bit.ly/scalerdiscord #30DaysOfNodejs #ScalerDiscord @scaler_official")
+print(choice(message_templates).replace('#',day) + "https://bit.ly/scalerdiscord #30DaysOfNodejs #ScalerDiscord #ScalerTopics @scaler_official")
