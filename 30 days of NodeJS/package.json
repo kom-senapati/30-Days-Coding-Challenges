@@ -1,0 +1,15 @@
+{
+  "name": "30-days-of-nodejs",
+  "version": "1.0.0",
+  "description": "![Nodsjsbanner](30daysOfNodeJS.png)",
+  "main": "Day3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
