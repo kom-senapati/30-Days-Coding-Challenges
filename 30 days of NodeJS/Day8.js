@@ -8,7 +8,7 @@
  * @param {Object} res - Express response object
  */
 function positiveIntegerHandler(req, res) {
-    const number = parseInt(req.params.number);
+    const number = parseInt(req.query.number);
 
     if (!Number.isNaN(number) && number > 0) {
         res.send(`Success: Received : ${number}`);
@@ -19,6 +19,7 @@ function positiveIntegerHandler(req, res) {
 
 const express = require('express');
 const app = express();
+app.get('/positive', positiveIntegerHandler);
 app.use((err, req, res, next) => {
     if (err.message === 'Number is not a positive integer') {
         res.status(400).send('Please provide a positive integer only.');
@@ -26,5 +27,4 @@ app.use((err, req, res, next) => {
         next(err);
     }
 });
-app.get('/check/:number', positiveIntegerHandler);
 app.listen(3001, () => console.log(`Server is running...`));
