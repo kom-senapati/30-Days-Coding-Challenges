@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+    <style>
+        #messages {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>WebSocket Test</h1>
+    <div id="messages"></div>
+    <button onclick="sendMessage()">Send Message</button>
+    <script>
+        const ws = new WebSocket('ws://localhost:3001/websocket');
+        const messagesDiv = document.getElementById('messages');
+
+        ws.onopen = function () {
+            console.log('Connected to WebSocket server');
+            messagesDiv.innerHTML += '<p>Connected to WebSocket server</p>';
+        };
+
+        function sendMessage() {
+            const message = prompt('Enter message to send:');
+            ws.send(message);
+            messagesDiv.innerHTML += '<p>Sent message: ' + message + '</p>';
+        }
+    </script>
+</body>
+
+</html>
