@@ -12,8 +12,7 @@ function loggingMiddleware(req, res, next) {
     const timestamp = new Date().toLocaleString();
 
     console.log(`[${timestamp}] ${req.method} ${req.url}`);
-    console.log('Request Headers:');
-    console.table(req.headers);
+    console.log('Request Headers:', (req.headers));
     console.log('Request Body:', req.body);
     next();
 }
