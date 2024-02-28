@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 28</title>
+</head>
+
+<body>
+    <h1>WebSocketing</h1>
+    <div id="messages"></div>
+
+    <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+
+        const socket = new WebSocket('ws://localhost:3001');
+
+        socket.onopen = () => {
+            console.log('WebSocket connection established');
+        };
+
+        socket.onmessage = (event) => {
+            const message = event.data;
+            console.log('Received message:', message);
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messagesDiv.appendChild(messageElement);
+        };
+
+        messageForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const message = messageInput.value;
+            socket.send(JSON.stringify(message));
+            messageInput.value = '';
+        });
+    </script>
+</body>
+
+</html>
